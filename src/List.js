@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { View, ScrollView, Text, Button } from 'react-native';
+import { View, ScrollView, Text, Button, AsyncStorage } from 'react-native';
 
 import Post from './Post';
 
@@ -25,6 +25,10 @@ export default class List extends Component {
     });
   }
 
+  savePosts = async () => {
+    await AsyncStorage.setItem('@TestRN:posts', JSON.stringify(this.state.posts))
+  }
+
   addPost = () => {
     this.setState({
       posts: [
@@ -41,7 +45,8 @@ export default class List extends Component {
           ? this.renderPosts()
           : <Text>Nenhum post</Text> }
 
-        <Button title="Add post" onPress={this.addPost} />
+        <Button id="new" title="Add post" onPress={this.addPost} />
+        <Button id="save" title="Save post" onPress={this.savePosts} />
       </View>
     )
   }

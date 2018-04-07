@@ -7,8 +7,8 @@ import { wrap } from 'module';
 
 const posts = [
   {id: 1, title: 'Test', description: 'test description'},
-  {id: 1, title: 'Test', description: 'test description'},
-  {id: 1, title: 'Test', description: 'test description'},
+  {id: 2, title: 'Test', description: 'test description'},
+  {id: 3, title: 'Test', description: 'test description'},
 ]
 
 describe('Testing list', () => {
@@ -34,5 +34,14 @@ describe('Testing list', () => {
     wrapper.find(Button).simulate('press');
     
     expect(wrapper.state('posts')).toHaveLength(1);
-  })
+  });
+
+  it('can delete post', () => {
+    const wrapper = shallow(<List />);
+    wrapper.setState({ posts })
+
+    wrapper.instance().deletePost(1);
+
+    expect(wrapper.state('posts')).toEqual(posts.filter(post => post.id !== 1));
+  });
 })

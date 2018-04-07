@@ -56,4 +56,12 @@ describe('Testing list', () => {
     expect(AsyncStorage.setItem.calledOnce).toBe(true);
     expect(AsyncStorage.setItem.args[0][1]).toBe(JSON.stringify(posts));
   });
+
+  it('load posts on init', () => {
+    sinon.stub(AsyncStorage, 'getItem').returns(JSON.stringify(posts));
+    const wrapper = shallow(<List />);
+
+    expect(AsyncStorage.getItem.calledOnce).toBe(true);
+    expect(AsyncStorage.getItem.returnValues[0]).toBe(JSON.stringify(posts));
+  });
 })

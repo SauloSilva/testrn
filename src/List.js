@@ -9,6 +9,11 @@ export default class List extends Component {
     posts: [],
   }
 
+  async componentDidMount() {
+    const posts = JSON.parse(await AsyncStorage.getItem('@TestRN:posts'));
+    this.setState({ posts });
+  }
+
   renderPosts = () => (
     <ScrollView>
       { 

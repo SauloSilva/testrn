@@ -4532,6 +4532,12 @@ react-is@^16.3.0:
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.3.0.tgz#f0e8bfd8c09b480dd610b8639d9ed65c13601224"
 
+react-native-onesignal@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-onesignal/-/react-native-onesignal-3.1.4.tgz#ecaa4c22597d2d76420b922110d28cdaf76ffe7d"
+  dependencies:
+    invariant "^2.2.2"
+
 react-native@0.54.4:
   version "0.54.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.54.4.tgz#19c6c598f6acf04f1c032fe9a1812f0c640fa8b7"

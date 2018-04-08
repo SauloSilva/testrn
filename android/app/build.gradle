@@ -106,6 +106,9 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [manifestApplicationId: "${applicationId}",
+                                onesignal_app_id: "f60e56aa-4d58-4726-be54-21dd36876b11",
+                                onesignal_google_project_number: "803080595916"]
     }
     splits {
         abi {
@@ -137,9 +140,11 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
+    compile project(':react-native-onesignal')
 }
 
 // Run this once to be able to run the application with BUCK

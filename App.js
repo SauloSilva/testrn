@@ -12,6 +12,8 @@ import {
   View
 } from 'react-native';
 
+import OneSignal from 'react-native-onesignal';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
     'Cmd+D or shake for dev menu',
@@ -21,6 +23,18 @@ const instructions = Platform.select({
 
 type Props = {};
 export default class App extends Component<Props> {
+  componentWillMount() {
+    OneSignal.addEventListener('received', this.onReceived);
+  }
+
+  componentWillUnmount() {
+    OneSignal.removeEventListener('received', this.onReceived);
+  }
+
+  onReceived = (notification) => {
+
+  }
+
   render() {
     return (
       <View style={styles.container}>
